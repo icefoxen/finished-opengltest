@@ -1,0 +1,14 @@
+#!/bin/sh
+
+FILES="globals.ml vector.ml mass.ml particles.ml camera.ml texloader.ml objloader.ml drawing.ml input.ml driver.ml main.ml"
+
+OPTLIBS="sdl.cmxa sdlloader.cmxa sdlmixer.cmxa sdlttf.cmxa lablgl.cmxa lablglut.cmxa unix.cmxa threads.cmxa"
+
+OCAMLCP=ocamlcp
+OCAMLOPT=ocamlopt.opt
+
+OCAMLSDLLIB=`ocamlfind query sdl`
+
+
+$OCAMLOPT -thread -c -I $OCAMLSDLLIB -I +lablGL $OPTLIBS $FILES
+
